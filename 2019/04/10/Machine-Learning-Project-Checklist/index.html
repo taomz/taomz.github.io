@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: false,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="This checklist can guide you through your Machine Learning projects. There are eight main steps:123456781. Frame the problem and look at the big picture.2. Get the data.3. Explore the data to gain ins">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning Project Checklist (English)">
+<meta property="og:url" content="http://yoursite.com/2019/04/10/Machine-Learning-Project-Checklist/index.html">
+<meta property="og:site_name" content="KevinTao的个人博客">
+<meta property="og:description" content="This checklist can guide you through your Machine Learning projects. There are eight main steps:123456781. Frame the problem and look at the big picture.2. Get the data.3. Explore the data to gain ins">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-15T03:51:15.048Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Machine Learning Project Checklist (English)">
+<meta name="twitter:description" content="This checklist can guide you through your Machine Learning projects. There are eight main steps:123456781. Frame the problem and look at the big picture.2. Get the data.3. Explore the data to gain ins">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/04/10/Machine-Learning-Project-Checklist/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Machine Learning Project Checklist (English) | KevinTao的个人博客</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2161bb0389d6570a830ec4c701e53c5e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">KevinTao的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">大凡人之自诩智识，多由阅历太少。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/10/Machine-Learning-Project-Checklist/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kevin Tao">
+      <meta itemprop="description" content="靡不有初 鲜克有终">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KevinTao的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Machine Learning Project Checklist (English)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-10 20:26:34" itemprop="dateCreated datePublished" datetime="2019-04-10T20:26:34+08:00">2019-04-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-15 11:51:15" itemprop="dateModified" datetime="2019-04-15T11:51:15+08:00">2019-04-15</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/10/Machine-Learning-Project-Checklist/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/10/Machine-Learning-Project-Checklist/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This checklist can guide you through your Machine Learning projects. There are <strong>eight main steps:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. Frame the problem and look at the big picture.</span><br><span class="line">2. Get the data.</span><br><span class="line">3. Explore the data to gain insights.</span><br><span class="line">4. Prepare the data to better expose the underlying data patterns to Machine Learning algorithms.</span><br><span class="line">5. Explore many different models and short-list the best ones.</span><br><span class="line">6. Fine-tune your models and combine them into a great solution.</span><br><span class="line">7. Present your solution.</span><br><span class="line">8. Launch, monitor, and maintain your system.</span><br></pre></td></tr></table></figure></p>
+<p>Obviously, you should feel free to adapt this checklist to your needs. You can also visit the <a href="https://taomz.github.io/2019/04/10/机器学习项目开发流程/" target="_blank" rel="noopener">Simplified Chinese Version</a>.</p>
+<h2 id="1-Frame-the-Problem-and-Look-at-the-Big-Picture"><a href="#1-Frame-the-Problem-and-Look-at-the-Big-Picture" class="headerlink" title="1. Frame the Problem and Look at the Big Picture"></a>1. Frame the Problem and Look at the Big Picture</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> 1. Define the objective in business terms.</span><br><span class="line"> 2. How will your solution be used?</span><br><span class="line"> 3. What are the current solutions/workarounds (if any)?</span><br><span class="line"> 4. How should you frame this problem (supervised/unsupervised, online/offline, etc.)?</span><br><span class="line"> 5. How should performance be measured?</span><br><span class="line"> 6. Is the performance measure aligned with the business objective?</span><br><span class="line"> 7. What would be the minimum performance needed to reach the business objective?</span><br><span class="line"> 8. What are comparable problems? Can you reuse experience or tools?</span><br><span class="line"> 9. Is human expertise available?</span><br><span class="line">10. How would you solve the problem manually?</span><br><span class="line">11. List the assumptions you (or others) have made so far.</span><br><span class="line">12. Verify assumptions if possible.</span><br></pre></td></tr></table></figure>
+<h2 id="2-Get-the-Data"><a href="#2-Get-the-Data" class="headerlink" title="2. Get the Data"></a>2. Get the Data</h2><p><strong>Note:</strong> automate as much as possible so you can easily get fresh data.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> 1. List the data you need and how much you need.</span><br><span class="line"> 2. Find and document where you can get that data.</span><br><span class="line"> 3. Check how much space it will take.</span><br><span class="line"> 4. Check legal obligations, and get authorization if necessary.</span><br><span class="line"> 5. Get access authorizations.</span><br><span class="line"> 6. Create a workspace (with enough storage space).</span><br><span class="line"> 7. Get the data.</span><br><span class="line"> 8. Convert the data to a format you can easily manipulate (without changing the data itself).</span><br><span class="line"> 9. Ensure sensitive information is deleted or protected (e.g., anonymized).</span><br><span class="line">10. Check the size and type of data (time series, sample, geographical, etc.).</span><br><span class="line">11. Sample a test set, put it aside, and never look at it (no data snooping!).</span><br></pre></td></tr></table></figure>
+<h2 id="3-Explore-the-Data"><a href="#3-Explore-the-Data" class="headerlink" title="3. Explore the Data"></a>3. Explore the Data</h2><p><strong>Note:</strong> try to get insights from a field expert for these steps.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> 1. Create a copy of the data for exploration (sampling it down to a manageable size if necessary).</span><br><span class="line"> 2. Create a Jupyter notebook to keep a record of your data exploration.</span><br><span class="line"> 3. Study each attribute and its characteristics:</span><br><span class="line">     • Name</span><br><span class="line">     • Type (categorical, int/float, bounded/unbounded, text, structured, etc.)</span><br><span class="line">     • % of missing values</span><br><span class="line">     • Noisiness and type of noise (stochastic, outliers, rounding errors, etc.)</span><br><span class="line">     • Possibly useful for the task?</span><br><span class="line">     • Type of distribution (Gaussian, uniform, logarithmic, etc.)</span><br><span class="line"> 4. For supervised learning tasks, identify the target attribute(s).</span><br><span class="line"> 5. Visualize the data.</span><br><span class="line"> 6. Study the correlations between attributes.</span><br><span class="line"> 7. Study how you would solve the problem manually.</span><br><span class="line"> 8. Identify the promising transformations you may want to apply.</span><br><span class="line"> 9. Identify extra data that would be useful (go back to “Get the Data”).</span><br><span class="line">10. Document what you have learned.</span><br></pre></td></tr></table></figure>
+<h2 id="4-Prepare-the-Data"><a href="#4-Prepare-the-Data" class="headerlink" title="4. Prepare the Data"></a>4. Prepare the Data</h2><p><strong>Notes:</strong></p>
+<ul>
+<li>Work on copies of the data (keep the original dataset intact).</li>
+<li>Write functions for all data transformations you apply, for five reasons:<ul>
+<li>So you can easily prepare the data the next time you get a fresh dataset</li>
+<li>So you can apply these transformations in future projects</li>
+<li>To clean and prepare the test set </li>
+<li>To clean and prepare new data instances once your solution is live</li>
+<li>To make it easy to treat your preparation choices as hyper parameters</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. Data cleaning:</span><br><span class="line">    • Fix or remove outliers (optional).</span><br><span class="line">    • Fill in missing values (e.g., with zero, mean, median…) or drop their rows (or columns).</span><br><span class="line">2. Feature selection (optional):</span><br><span class="line">    • Drop the attributes that provide no useful information for the task.</span><br><span class="line">3. Feature engineering, where appropriate:</span><br><span class="line">    • Discretize continuous features.</span><br><span class="line">    • Decompose features (e.g., categorical, date/time, etc.).</span><br><span class="line">    • Add promising transformations of features (e.g., log(x), sqrt(x), x^2, etc.).</span><br><span class="line">    • Aggregate features into promising new features.</span><br><span class="line">4. Feature scaling: standardize or normalize features.</span><br></pre></td></tr></table></figure>
+<h2 id="5-Short-List-Promising-Models"><a href="#5-Short-List-Promising-Models" class="headerlink" title="5. Short-List Promising Models"></a>5. Short-List Promising Models</h2><p><strong>Notes:</strong></p>
+<ul>
+<li>If the data is huge, you may want to sample smaller training sets so you can train many different models in a reasonable time (be aware that this penalizes complex models such as large neural ents or Random Forests).</li>
+<li>Once again, try to automate these steps as much as possible.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. Train many quick and dirty models from different categories (e.g., linear, naive Bayes, SVM, Random Forests, neural net, etc.) using standard parameters.</span><br><span class="line">2. Measure and compare their performance.</span><br><span class="line">    • For each model, use N-fold cross-validation and compute the mean and standard deviation of the performance measure on the N folds.</span><br><span class="line">3. Analyze the most significant variables for each algorithm.</span><br><span class="line">4. Analyze the types of errors the models make.</span><br><span class="line">    • What data would a human have used to avoid these errors?</span><br><span class="line">5. Have a quick round fo feature selection and engineering.</span><br><span class="line">6. Have one or two more quick iterations of the five previous steps.</span><br><span class="line">7. Short-list the top three to five most promising models, preferring models that make different types of errors.</span><br></pre></td></tr></table></figure>
+<h2 id="6-Fine-Tune-the-System"><a href="#6-Fine-Tune-the-System" class="headerlink" title="6. Fine-Tune the System"></a>6. Fine-Tune the System</h2><p><strong>Notes:</strong></p>
+<ul>
+<li>You will want to use as much data as possible for this step, especially as you move toward the end of fine-tuning.</li>
+<li>As always automate what you can.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. Fine-tune the hyperparameters using cross-validation.</span><br><span class="line">    • Create your data transformation choices as hyperparameters, especially when you are not sure about them (e.g., should I replace missing values with zero or with the median value? Or just drop the rows?).</span><br><span class="line">    • Unless there are very few hyper parameter values to explore, prefer random search over grid search. If training is very long, you may prefer a Bayesian optimization approach (e.g., using Gaussian process priors, as described by Jasper Snoek, Hugo Larochelle, and Ryan Adams).</span><br><span class="line">2. Try Ensemble methods. Combining your best models will often perform better than running them individually.</span><br><span class="line">3. Once you are confident about your final model, measure its performance on the test set to estimate the generalization error.</span><br></pre></td></tr></table></figure>
+<p>Don’t tweak your model after measuring the generalization error: you would just start overfitting the test set.</p>
+<h2 id="7-Present-Your-Solution"><a href="#7-Present-Your-Solution" class="headerlink" title="7. Present Your Solution"></a>7. Present Your Solution</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. Document what you have done</span><br><span class="line">2. Create a nice presentation.</span><br><span class="line">    • Make sure you highlight the big picture first.</span><br><span class="line">3. Explain why your solution achieves the business objective.</span><br><span class="line">4. Don’t forget to present interesting points you noticed along the way.</span><br><span class="line">    • Describe what worked and what did not.</span><br><span class="line">    • List your assumptions and your system’s limitations.</span><br><span class="line">5. Ensure your key finds are communicated through beautiful visualizations or easy-to-remember statements (e.g., “the median income is the number-one predictor of housing prices”).</span><br></pre></td></tr></table></figure>
+<h2 id="8-Launch"><a href="#8-Launch" class="headerlink" title="8. Launch!"></a>8. Launch!</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. Get your solution ready for production (plug into production data inputs, write unit tests, etc.).</span><br><span class="line">2. Write monitoring code to check your system’s live performance at regular intervals and trigger alert when it drops.</span><br><span class="line">    • Beware of slow degradation too: models tend to “rot” as data evolves.</span><br><span class="line">    • Measuring performance may require a human pipeline (e.g., via a crowdsourcing service).</span><br><span class="line">    • Also monitor your inputs’ quality (e.g., a malfunctioning sensor sending random values, or another team’s output becoming stale). This is particularly important for online learning systems.</span><br><span class="line">3. Retrain your models on a regal basis on fresh data (automate as much as possible).</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Kevin Tao wechat" style="width: 200px; max-width: 100%;">
+  <div>Welcome to follow my public wechat account by scanning the QR code.</div>
+</div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/10/机器学习项目开发流程/" rel="next" title="机器学习项目开发流程（中文版）">
+                <i class="fa fa-chevron-left"></i> 机器学习项目开发流程（中文版）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.JPG" alt="Kevin Tao">
+            
+              <p class="site-author-name" itemprop="name">Kevin Tao</p>
+              <div class="site-description motion-element" itemprop="description">靡不有初 鲜克有终</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="http://weixin.sogou.com/weixin?type=1&query=阅读充电笔记" title="WeChat &rarr; http://weixin.sogou.com/weixin?type=1&query=阅读充电笔记" rel="noopener" target="_blank"><i class="fa fa-fw fa-wechat"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/12157688" title="Weibo &rarr; https://weibo.com/12157688" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://www.instagram.com/kevintao511/" title="Instagram &rarr; https://www.instagram.com/kevintao511/" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/minzetao" title="Twitter &rarr; https://twitter.com/minzetao" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/kevintao511" title="GitHub &rarr; https://github.com/kevintao511" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:minzetao@icloud.com" title="E-Mail &rarr; mailto:minzetao@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Frame-the-Problem-and-Look-at-the-Big-Picture"><span class="nav-number">1.</span> <span class="nav-text">1. Frame the Problem and Look at the Big Picture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Get-the-Data"><span class="nav-number">2.</span> <span class="nav-text">2. Get the Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Explore-the-Data"><span class="nav-number">3.</span> <span class="nav-text">3. Explore the Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Prepare-the-Data"><span class="nav-number">4.</span> <span class="nav-text">4. Prepare the Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Short-List-Promising-Models"><span class="nav-number">5.</span> <span class="nav-text">5. Short-List Promising Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Fine-Tune-the-System"><span class="nav-number">6.</span> <span class="nav-text">6. Fine-Tune the System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Present-Your-Solution"><span class="nav-number">7.</span> <span class="nav-text">7. Present Your Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Launch"><span class="nav-number">8.</span> <span class="nav-text">8. Launch!</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; Copyright – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Made by KevinTao</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: 'xTdtiNCYGmpFfCpcscBKx2Af-gzGzoHsz',
+    appKey: 'gmC9BA6qpME5kfDj4MdeTQCU',
+    placeholder: 'Hi, welcome to discuss the exchange...',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'en' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

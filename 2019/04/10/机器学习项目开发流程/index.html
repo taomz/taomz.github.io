@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: false,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文翻译自原文 Machine Learning Project Checklist，本文主要指导您大部分机器学习项目的开发流程，主要包括8个步骤： 123456781. 问题构建。2. 获取数据。3. 探索式分析数据。4. 准备数据，将基础数据模式更好的提供给机器学习算法。5. 模型选择，探索不同的模型并列出最优模型。6. 模型微调，将它们组合成一个很好的解决方案。7. 展示您的解决方案。8.">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习项目开发流程（中文版）">
+<meta property="og:url" content="http://yoursite.com/2019/04/10/机器学习项目开发流程/index.html">
+<meta property="og:site_name" content="KevinTao的个人博客">
+<meta property="og:description" content="本文翻译自原文 Machine Learning Project Checklist，本文主要指导您大部分机器学习项目的开发流程，主要包括8个步骤： 123456781. 问题构建。2. 获取数据。3. 探索式分析数据。4. 准备数据，将基础数据模式更好的提供给机器学习算法。5. 模型选择，探索不同的模型并列出最优模型。6. 模型微调，将它们组合成一个很好的解决方案。7. 展示您的解决方案。8.">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-17T03:20:42.624Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习项目开发流程（中文版）">
+<meta name="twitter:description" content="本文翻译自原文 Machine Learning Project Checklist，本文主要指导您大部分机器学习项目的开发流程，主要包括8个步骤： 123456781. 问题构建。2. 获取数据。3. 探索式分析数据。4. 准备数据，将基础数据模式更好的提供给机器学习算法。5. 模型选择，探索不同的模型并列出最优模型。6. 模型微调，将它们组合成一个很好的解决方案。7. 展示您的解决方案。8.">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/04/10/机器学习项目开发流程/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>机器学习项目开发流程（中文版） | KevinTao的个人博客</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2161bb0389d6570a830ec4c701e53c5e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">KevinTao的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">大凡人之自诩智识，多由阅历太少。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/10/机器学习项目开发流程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kevin Tao">
+      <meta itemprop="description" content="靡不有初 鲜克有终">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KevinTao的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">机器学习项目开发流程（中文版）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-10 20:25:54" itemprop="dateCreated datePublished" datetime="2019-04-10T20:25:54+08:00">2019-04-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-17 11:20:42" itemprop="dateModified" datetime="2019-04-17T11:20:42+08:00">2019-04-17</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/10/机器学习项目开发流程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/10/机器学习项目开发流程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文翻译自原文 <a href="https://taomz.github.io/2019/04/10/Machine-Learning-Project-Checklist/" target="_blank" rel="noopener">Machine Learning Project Checklist</a>，本文主要指导您大部分机器学习项目的开发流程，<strong>主要包括8个步骤：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. 问题构建。</span><br><span class="line">2. 获取数据。</span><br><span class="line">3. 探索式分析数据。</span><br><span class="line">4. 准备数据，将基础数据模式更好的提供给机器学习算法。</span><br><span class="line">5. 模型选择，探索不同的模型并列出最优模型。</span><br><span class="line">6. 模型微调，将它们组合成一个很好的解决方案。</span><br><span class="line">7. 展示您的解决方案。</span><br><span class="line">8. 上线，监控和维护系统。</span><br></pre></td></tr></table></figure>
+<p>当然，您可以根据具体需求调整此开发流程。</p>
+<h2 id="1-问题构建"><a href="#1-问题构建" class="headerlink" title="1. 问题构建"></a>1. 问题构建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> 1. 明确项目目标。</span><br><span class="line"> 2. 如何使用您的解决方案？</span><br><span class="line"> 3. 目前的解决方案/解决方法是什么（如果有的话）？</span><br><span class="line"> 4. 如何构建这个问题（有监督/无监督，在线/离线等）？</span><br><span class="line"> 5. 如何评估性能？</span><br><span class="line"> 6. 性能评估和业务目标是否一致？</span><br><span class="line"> 7. 达到业务目标的最低性能是什么？</span><br><span class="line"> 8. 类似的问题有哪些？是否可以复用经验或工具？</span><br><span class="line"> 9. 是否需要专家评价？</span><br><span class="line">10. 手工如何解决此问题？</span><br><span class="line">11. 列出迄今为止您或其他人所做出的假设。</span><br><span class="line">12. 尽可能验证假设。</span><br></pre></td></tr></table></figure>
+<h2 id="2-获取数据"><a href="#2-获取数据" class="headerlink" title="2. 获取数据"></a>2. 获取数据</h2><p><strong>注意：</strong>尽可能自动化获取新数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> 1. 列出您要什么数据以及需要多少数据。</span><br><span class="line"> 2. 查找并记录获取该数据的地方。</span><br><span class="line"> 3. 检查一下该数据大概占用多少空间。</span><br><span class="line"> 4. 检查法律条文，获得授权，如果需要的话。</span><br><span class="line"> 5. 获得访问权限。</span><br><span class="line"> 6. 创建工作区（具有足够的存储空间）。</span><br><span class="line"> 7. 获取数据。</span><br><span class="line"> 8. 将数据转换成容易操作的格式（不更改数据本身）。</span><br><span class="line"> 9. 确保删除或保护敏感信息（例如：匿名）。</span><br><span class="line">10. 检查数据的大小和类型（时间序列、样本、地理位置等）。</span><br><span class="line">11. 采样测试集，将其放一边，不要看它（不能窥探数据！）。</span><br></pre></td></tr></table></figure>
+<h2 id="3-探索式分析数据"><a href="#3-探索式分析数据" class="headerlink" title="3. 探索式分析数据"></a>3. 探索式分析数据</h2><p><strong>注意：</strong>尝试从相关领域专家那里获取有关这些步骤的见解。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> 1. 复制一份数据用来做探索分析。</span><br><span class="line"> 2. 创建一个Jupyter笔记本来记录您的数据探索。</span><br><span class="line"> 3. 研究每个属性及特征：</span><br><span class="line">     • 名称</span><br><span class="line">     • 类型（分类，整型/浮点型，有界/无界，文本，结构化等）</span><br><span class="line">     • 缺失值的百分比</span><br><span class="line">     • 噪音和噪音类型（随机的，异常值，舍入误差等）</span><br><span class="line">     • 该属性对任务是否有用？</span><br><span class="line">     • 分布类型（高斯分布，均匀分布，对数分布等）</span><br><span class="line"> 4. 对于有监督学习任务，确定目标属性。</span><br><span class="line"> 5. 可视化数据。</span><br><span class="line"> 6. 研究属性之间的相关性。</span><br><span class="line"> 7. 研究如何手工解决这问题？</span><br><span class="line"> 8. 明确您可能想要应用的有用的转换。</span><br><span class="line"> 9. 明确有用的额外数据（请参考“获取数据”）。</span><br><span class="line">10. 记录下你学到的东西。</span><br></pre></td></tr></table></figure>
+<h2 id="4-准备数据"><a href="#4-准备数据" class="headerlink" title="4. 准备数据"></a>4. 准备数据</h2><p><strong>注意：</strong></p>
+<ul>
+<li>在数据副本上操作（保持原始数据的完整性）。</li>
+<li>为所有数据编写转换函数，原因是：<ul>
+<li>当下次获取新数据集时，很方便的准备数据</li>
+<li>可以在将来的项目中使用这些转换函数</li>
+<li>用来清洗和准备测试数据集</li>
+<li>在解决方案生效后，可以用来清洗和准备新的数据实例</li>
+<li>将您的准备选择作为超参数时更容易</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. 数据清洗：</span><br><span class="line">    • 处理或删除异常值（可选）</span><br><span class="line">    • 填充缺失值（例如：零，均值，中位数...）或删除它们所在的行（或列）</span><br><span class="line">2. 特征选取（可选）</span><br><span class="line">    • 删除对任务无有用信息的属性</span><br><span class="line">3. 特征工程，适当时：</span><br><span class="line">    • 离散化连续特征</span><br><span class="line">    • 分解特征（例如：分类，日期/时间等）</span><br><span class="line">    • 添加有用的特征转换（例如：log(x), sqrt(x), x^2等）</span><br><span class="line">    • 聚合生成有用的新特征</span><br><span class="line">4. 特征缩放：标准化或正则化特征。</span><br></pre></td></tr></table></figure>
+<h2 id="5-模型选择"><a href="#5-模型选择" class="headerlink" title="5. 模型选择"></a>5. 模型选择</h2><p><strong>注意：</strong></p>
+<ul>
+<li>如果数据量很大，可能需要采样出较小的训练集，以便在合理的时间内训练出多个不同的模型（请注意，这不利于复杂模型，如大型神经网络或随机森林）。</li>
+<li>再次强调，尽可能使下面的这些步骤自动化。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 使用标准参数训练多个迅速又随性的不同类别的模型（例如：线性、朴素贝叶斯、SVM、随机森林、神经网络等）。</span><br><span class="line">2. 评估并比较它们的性能</span><br><span class="line">    • 对每个模型，使用N折交叉验证，并计算N折性能评估的均值和标准差</span><br><span class="line">3. 分析每个算法的最重要变量。</span><br><span class="line">4. 分析每个模型产生的错误类型</span><br><span class="line">    • 人类会使用什么数据来避免这些错误？</span><br><span class="line">5. 进行一轮快速的特征选取和特征工程。</span><br><span class="line">6. 对前五步进行1到2次的快速迭代。</span><br><span class="line">7. 选出前3到5个表现最好的模型，更倾向于那些出现不同类型错误的模型。</span><br></pre></td></tr></table></figure>
+<h2 id="6-模型微调"><a href="#6-模型微调" class="headerlink" title="6. 模型微调"></a>6. 模型微调</h2><p><strong>注意：</strong></p>
+<ul>
+<li>这步骤中尽可能多的使用数据，尤其是要进行最终调优的时候。</li>
+<li>尽可能自动化。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 使用交叉验证微调超参</span><br><span class="line">    • 创建数据转换选择作为超参，特别是不确定怎么处理它们时（例如：应该用零还是中位数替换缺失值？或只是删除行？）</span><br><span class="line">    • 除非只有很少的超参数值供选择，否则最好使用随机搜索而不是网格搜索来寻找合适的参数值。如果训练时间很长，您可能更倾向于贝叶斯优化方法（例如：使用高斯过程先验，如Jasper Snoek, Hugo Larochelle和Ryan Adams所说）。</span><br><span class="line">2. 尝试组合方法，组合最佳模型通常比单独运行它们更好一些。</span><br><span class="line">3. 当确定了最终模型后，在测试集上测量性能以估计泛化误差。</span><br></pre></td></tr></table></figure>
+<p>测试泛化误差后不要调整模型：那会使得模型对测试集过拟合。</p>
+<h2 id="7-展示您的解决方案"><a href="#7-展示您的解决方案" class="headerlink" title="7. 展示您的解决方案"></a>7. 展示您的解决方案</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. 记录下你所做的事情。</span><br><span class="line">2. 新建一个漂亮的演示ppt</span><br><span class="line">    • 突出重点</span><br><span class="line">3. 解释您的方案为什么能达到业务目标。</span><br><span class="line">4. 不要忘记体现过程中的有趣点</span><br><span class="line">    • 描述那些有效，哪些无效</span><br><span class="line">    • 列出您的假设和系统的局限性</span><br><span class="line">5. 通过漂亮的可视化或易于记忆的陈述来传达你的关键成果（例如：收入中位数是房价预测中的第一关键因子）。</span><br></pre></td></tr></table></figure>
+<h2 id="8-上线、监控和维护系统"><a href="#8-上线、监控和维护系统" class="headerlink" title="8. 上线、监控和维护系统"></a>8. 上线、监控和维护系统</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 准备好生产环境方案（插入生产数据输入，写单元测试等）</span><br><span class="line">2. 编写监控代码，定期检查系统的实时性能，掉线时触发警告</span><br><span class="line">    • 谨防慢性恶化：随着数据的发展，模型往往会“腐坏”</span><br><span class="line">    • 性能测试可能需要人工渠道（例如：通过众包服务）</span><br><span class="line">    • 监控输入质量（例如：一个故障传感器发送随机值，或其他团队的输出失效）。这对在线学习系统尤为重要。</span><br><span class="line">3. 重新训练模型，使用定期新数据（尽可能自动化）。</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Kevin Tao wechat" style="width: 200px; max-width: 100%;">
+  <div>Welcome to follow my public wechat account by scanning the QR code.</div>
+</div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/10/Machine-Learning-Project-Checklist/" rel="prev" title="Machine Learning Project Checklist (English)">
+                Machine Learning Project Checklist (English) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.JPG" alt="Kevin Tao">
+            
+              <p class="site-author-name" itemprop="name">Kevin Tao</p>
+              <div class="site-description motion-element" itemprop="description">靡不有初 鲜克有终</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="http://weixin.sogou.com/weixin?type=1&query=阅读充电笔记" title="WeChat &rarr; http://weixin.sogou.com/weixin?type=1&query=阅读充电笔记" rel="noopener" target="_blank"><i class="fa fa-fw fa-wechat"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/12157688" title="Weibo &rarr; https://weibo.com/12157688" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://www.instagram.com/kevintao511/" title="Instagram &rarr; https://www.instagram.com/kevintao511/" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/minzetao" title="Twitter &rarr; https://twitter.com/minzetao" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/kevintao511" title="GitHub &rarr; https://github.com/kevintao511" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:minzetao@icloud.com" title="E-Mail &rarr; mailto:minzetao@icloud.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-问题构建"><span class="nav-number">1.</span> <span class="nav-text">1. 问题构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-获取数据"><span class="nav-number">2.</span> <span class="nav-text">2. 获取数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-探索式分析数据"><span class="nav-number">3.</span> <span class="nav-text">3. 探索式分析数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-准备数据"><span class="nav-number">4.</span> <span class="nav-text">4. 准备数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-模型选择"><span class="nav-number">5.</span> <span class="nav-text">5. 模型选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-模型微调"><span class="nav-number">6.</span> <span class="nav-text">6. 模型微调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-展示您的解决方案"><span class="nav-number">7.</span> <span class="nav-text">7. 展示您的解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-上线、监控和维护系统"><span class="nav-number">8.</span> <span class="nav-text">8. 上线、监控和维护系统</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; Copyright – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Made by KevinTao</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: 'xTdtiNCYGmpFfCpcscBKx2Af-gzGzoHsz',
+    appKey: 'gmC9BA6qpME5kfDj4MdeTQCU',
+    placeholder: 'Hi, welcome to discuss the exchange...',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'en' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
